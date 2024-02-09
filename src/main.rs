@@ -69,6 +69,7 @@ fn main() {
         WHITE_SHIP_COUNT + BLACK_SHIP_COUNT + RED_SHIP_COUNT + GOLD_SHIP_COUNT + CAPITAL_SHIP_COUNT;
 
     // Create a loop to pick ships
+    let mut skip_player: (bool, i32) = (false, 0);
     println!("Time to pick ships!");
     loop {
         // Determine player from current_player
@@ -83,9 +84,16 @@ fn main() {
             break;
         }
 
+        // Check if the player should be skipped
+        if skip_player.0 && skip_player.1 == current_player {
+            current_player = if current_player == 1 { 2 } else { 1 };
+            continue;
+        }
+
         // Ensure that the player has draw points
         if player.draw_remaining <= 0 {
             println!("Player {} has no more draw points!", current_player);
+            skip_player = (true, current_player);
             current_player = if current_player == 1 { 2 } else { 1 };
             continue;
         }
@@ -194,4 +202,6 @@ fn main() {
             }
         }
     }
+
+    // Set up the game board
 }
