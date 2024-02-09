@@ -25,10 +25,6 @@ use rand::Rng;
 const ACTION_POINTS: i32 = 3;
 
 fn main() {
-    #[allow(unused_mut)]
-    #[allow(unused_variables)]
-    let mut board_manager = BoardManager::new();
-
     // Intro text
     println!("Boat Battles!");
     println!("Start Game? (y/n)");
@@ -204,4 +200,6 @@ fn main() {
     }
 
     // Set up the game board
+    let game_board_manager = BoardManager::new();
+    game_board_manager.board.print_board();
 }
