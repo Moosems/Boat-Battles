@@ -78,6 +78,11 @@ fn main() {
             &mut player2
         };
 
+        // Ensure that there are ships left otherwise break
+        if ships_left == 0 {
+            break;
+        }
+
         // Ensure that the player has draw points
         if player.draw_remaining <= 0 {
             println!("Player {} has no more draw points!", current_player);
@@ -134,7 +139,7 @@ fn main() {
             }
             "R" => {
                 // Check if there are any red ships left
-                if red_ships_left > 0 {
+                if red_ships_left == 0 {
                     println!("No more red ships left!");
                     continue;
                 }
@@ -151,7 +156,7 @@ fn main() {
             }
             "G" => {
                 // Check if there are any gold ships left
-                if gold_ships_left > 0 {
+                if gold_ships_left == 0 {
                     println!("No more gold ships left!");
                     continue;
                 }
@@ -168,7 +173,7 @@ fn main() {
             }
             "C" => {
                 // Check if there are any capital ships left
-                if capital_ships_left > 0 {
+                if capital_ships_left == 0 {
                     println!("No more capital ships left!");
                     continue;
                 }
